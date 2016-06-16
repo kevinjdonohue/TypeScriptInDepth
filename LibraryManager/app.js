@@ -4,5 +4,5 @@ var HelloWorld = (function () {
     }
     return HelloWorld;
 }());
-var hello = new HelloWorld('Hello TypeScript');
+var hello = new HelloWorld('Hello TypeScript!!!');
 console.log(hello.message);
