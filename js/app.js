@@ -6,3 +6,4 @@ var HelloWorld = (function () {
 }());
 var hello = new HelloWorld('Hello TypeScript!!!');
 console.log(hello.message);
+//# sourceMappingURL=app.js.map
