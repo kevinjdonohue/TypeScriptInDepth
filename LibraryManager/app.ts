@@ -1,8 +1,9 @@
 import { Category } from "./enums";
-import { Book, Logger, Author, Librarian } from "./interfaces";
+import { Book, Logger, Author, Librarian, Magazine } from "./interfaces";
 import { UniversityLibrarian, ReferenceItem } from "./classes";
-import { calculateLateFee as CalcFee, maxBooksAllowed } from "./lib/utilityFunctions";
+import { calculateLateFee as CalcFee, maxBooksAllowed, Purge } from "./lib/utilityFunctions";
 import refBook from "./encyclopedia";
+import Shelf from "./shelf";
 
 function getAllBooks(): Book[] {
 
@@ -113,50 +114,34 @@ let Newspaper = class extends ReferenceItem {
 let myPaper = new Newspaper("The Gazette", 2016);
 myPaper.printCitation();
 
-// class Novel extends class { title: string } {
-//     mainCharacter: string;
-// };
 
+let inventory: Array<Book> = [
+    { id: 10, title: "The C Programming Language", author: "K & R", available: true, category: Category.Software },
+    { id: 11, title: "Code Complete", author: "Steve McConnell", available: true, category: Category.Software },
+    { id: 12, title: "8-Bit Graphics with Cobol", author: "A. B.", available: true, category: Category.Software },
+    { id: 13, title: "Cool autoexec.bat Scripts!", author: "C. D.", available: true, category: Category.Software }
+];
 
-// let refBook: ReferenceItem = new Encyclopedia("WorldPedia", 1900, 10);
-// refBook.printItem();
-// refBook.printCitation();
+let bookShelf: Shelf<Book> = new Shelf<Book>();
 
-// let myBook: Book = {
-//     id: 5,
-//     title: "Pride and Prejudice",
-//     author: "Jane Austen",
-//     available: true,
-//     category: Category.Fiction,
-//     pages: 250,
-//     markDamaged: (reason: string) => console.log("Damaged: " + reason)
-// };
+inventory.forEach(book => bookShelf.add(book));
 
-// let logDamage: DamageLogger;
-//
-// logDamage = (damage: string) => console.log("Damage reported: " + damage);
-// logDamage("coffee stains");
-//
-// let favoriteLibrarian: Librarian = new UniversityLibrarian();
-// favoriteLibrarian.name = "Sharon";
-// favoriteLibrarian.assistCustomer("Lynda");
-//
-// let ref: ReferenceItem = new ReferenceItem("Updated Facts and Figures", 2012);
-// ref.printItem();
-// ref.publisher = "Random Data Publishing";
-// console.log(ref.publisher);
+let firstBook: Book = bookShelf.getFirst();
 
-// printBook(myBook);
-// myBook.markDamaged("torn pages");
+let magazines: Array<Magazine> = [
+    { title: "Programming Language Monthly", publisher: "Code Mags" },
+    { title: "Literary Fiction Quarterly", publisher: "College Press" },
+    { title: "Five Points", publisher: "GSU" }
+];
 
-// let x: number;
-//
-// let idGenerator: (chars: string, nums: number) => string;
-//
-// idGenerator = createCustomerId;
-//
-// let myId: string = idGenerator("daniel", 10);
-// console.log(myId);
+let magazineShelf: Shelf<Magazine> = new Shelf<Magazine>();
 
-// const fictionBooks = getBookTitlesByCategory(Category.Fiction);
-// fictionBooks.forEach((value, index, array) => console.log(++index + " - " + value));
+magazines.forEach(mag => magazineShelf.add(mag));
+
+let firstMagazine: Magazine = magazineShelf.getFirst();
+
+magazineShelf.printTitles();
+
+let softwareBook = bookShelf.find("Code Complete");
+
+console.log(`${softwareBook.title} (${softwareBook.author})`);

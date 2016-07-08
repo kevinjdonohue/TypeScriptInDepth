@@ -14,4 +14,8 @@ function privateFunc(): void {
     console.log("This is private...");
 }
 
-export {calculateLateFee, maxBooksAllowed};
+function Purge<T>(inventory: Array<T>): Array<T> {
+    return inventory.splice(2, inventory.length);
+}
+
+export {calculateLateFee, maxBooksAllowed, Purge};

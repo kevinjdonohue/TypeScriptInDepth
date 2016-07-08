@@ -6,6 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var enums_1 = require("./enums");
 var classes_1 = require("./classes");
+var shelf_1 = require("./shelf");
 function getAllBooks() {
     var books = [
         { id: 1, title: "Ulysses", author: "James Joyce", available: true, category: enums_1.Category.Fiction },
@@ -98,4 +99,24 @@ var Newspaper = (function (_super) {
 }(classes_1.ReferenceItem));
 var myPaper = new Newspaper("The Gazette", 2016);
 myPaper.printCitation();
+var inventory = [
+    { id: 10, title: "The C Programming Language", author: "K & R", available: true, category: enums_1.Category.Software },
+    { id: 11, title: "Code Complete", author: "Steve McConnell", available: true, category: enums_1.Category.Software },
+    { id: 12, title: "8-Bit Graphics with Cobol", author: "A. B.", available: true, category: enums_1.Category.Software },
+    { id: 13, title: "Cool autoexec.bat Scripts!", author: "C. D.", available: true, category: enums_1.Category.Software }
+];
+var bookShelf = new shelf_1.default();
+inventory.forEach(function (book) { return bookShelf.add(book); });
+var firstBook = bookShelf.getFirst();
+var magazines = [
+    { title: "Programming Language Monthly", publisher: "Code Mags" },
+    { title: "Literary Fiction Quarterly", publisher: "College Press" },
+    { title: "Five Points", publisher: "GSU" }
+];
+var magazineShelf = new shelf_1.default();
+magazines.forEach(function (mag) { return magazineShelf.add(mag); });
+var firstMagazine = magazineShelf.getFirst();
+magazineShelf.printTitles();
+var softwareBook = bookShelf.find("Code Complete");
+console.log(softwareBook.title + " (" + softwareBook.author + ")");
 //# sourceMappingURL=app.js.map
