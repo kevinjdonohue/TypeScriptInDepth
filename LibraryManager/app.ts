@@ -7,7 +7,7 @@ import Shelf from "./shelf";
 
 function getAllBooks(): Book[] {
 
-    let books = [
+    let books: Array<Book> = [
         { id: 1, title: "Ulysses", author: "James Joyce", available: true, category: Category.Fiction },
         { id: 2, title: "A Farewell to Arms", author: "Ernest Hemingway", available: false, category: Category.Fiction },
         { id: 3, title: "I Know Why the Caged Bird Sings", author: "Maya Angelou", available: true, category: Category.Poetry },
@@ -17,7 +17,7 @@ function getAllBooks(): Book[] {
     return books;
 }
 
-function logFirstAvailable(books): void {
+function logFirstAvailable(books: Array<Book>): void {
 
     let numberOfBooks: number = books.length;
     let firstAvailable: string = "";
