@@ -112,7 +112,7 @@ let Newspaper = class extends ReferenceItem {
 };
 
 let myPaper = new Newspaper("The Gazette", 2016);
-myPaper.printCitation();
+// myPaper.printCitation();
 
 
 let inventory: Array<Book> = [
@@ -140,8 +140,57 @@ magazines.forEach(mag => magazineShelf.add(mag));
 
 let firstMagazine: Magazine = magazineShelf.getFirst();
 
-magazineShelf.printTitles();
+// magazineShelf.printTitles();
 
 let softwareBook = bookShelf.find("Code Complete");
 
-console.log(`${softwareBook.title} (${softwareBook.author})`);
+interface Cabin {
+    id: number,
+    price: string | null,
+    isFirstClass: boolean,
+    isCoachCabin: boolean,
+    isBusinessClass: boolean,
+    hasPreferredPlusSeats: boolean,
+    hasPremiumClassSeats: boolean
+
+}
+
+let cabins: Cabin[] = [
+    { id: 1, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 2, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 3, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 4, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 5, price: "$20", isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 6, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 7, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 8, price: "$15", isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: true }
+];
+
+// for (let cabin of cabins) {
+//     if (cabin.price) {
+//         price = cabin.price;
+//         break;
+//     }
+// }
+
+// function findPrice(cabins)
+
+// var filteredCabins = cabins.filter(function(cabin) {
+//     return (cabin.price !== null) && (cabin.hasPremiumClassSeats || cabin.hasPreferredPlusSeats);
+// });
+
+let filteredCabins: Cabin[] = cabins.filter((cabin) => {
+    return (cabin.price !== null) && (cabin.hasPreferredPlusSeats || cabin.hasPremiumClassSeats);
+});
+
+console.log("cabins.length: " + cabins.length);
+
+console.log("filteredCabins.length: " + filteredCabins.length);
+
+console.log("id: " + filteredCabins[0].id);
+
+console.log("price: " + filteredCabins[0].price);
+
+// console.log(`price: ${price}`);
+
+// console.log(`${softwareBook.title} (${softwareBook.author})`);

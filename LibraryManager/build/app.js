@@ -98,7 +98,6 @@ var Newspaper = (function (_super) {
     return class_1;
 }(classes_1.ReferenceItem));
 var myPaper = new Newspaper("The Gazette", 2016);
-myPaper.printCitation();
 var inventory = [
     { id: 10, title: "The C Programming Language", author: "K & R", available: true, category: enums_1.Category.Software },
     { id: 11, title: "Code Complete", author: "Steve McConnell", available: true, category: enums_1.Category.Software },
@@ -116,7 +115,22 @@ var magazines = [
 var magazineShelf = new shelf_1.default();
 magazines.forEach(function (mag) { return magazineShelf.add(mag); });
 var firstMagazine = magazineShelf.getFirst();
-magazineShelf.printTitles();
 var softwareBook = bookShelf.find("Code Complete");
-console.log(softwareBook.title + " (" + softwareBook.author + ")");
+var cabins = [
+    { id: 1, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 2, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 3, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 4, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 5, price: "$20", isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 6, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 7, price: null, isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: false },
+    { id: 8, price: "$15", isFirstClass: true, isCoachCabin: false, isBusinessClass: false, hasPreferredPlusSeats: false, hasPremiumClassSeats: true }
+];
+var filteredCabins = cabins.filter(function (cabin) {
+    return (cabin.price !== null) && (cabin.hasPreferredPlusSeats || cabin.hasPremiumClassSeats);
+});
+console.log("cabins.length: " + cabins.length);
+console.log("filteredCabins.length: " + filteredCabins.length);
+console.log("id: " + filteredCabins[0].id);
+console.log("price: " + filteredCabins[0].price);
 //# sourceMappingURL=app.js.map
